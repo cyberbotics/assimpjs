@@ -12,11 +12,9 @@ static const aiScene* ImportFileListByMainFile (Assimp::Importer& importer, cons
 {
 	try {
 		if (isMesh)
-			importer.SetPropertyInteger(AI_CONFIG_PP_RVC_FLAGS, aiComponent_CAMERAS | aiComponent_LIGHTS | aiComponent_BONEWEIGHTS |
-																													aiComponent_ANIMATIONS | aiComponent_TEXTURES | aiComponent_COLORS);
+			importer.SetPropertyInteger(AI_CONFIG_PP_RVC_FLAGS, aiComponent_CAMERAS | aiComponent_LIGHTS | aiComponent_BONEWEIGHTS | aiComponent_ANIMATIONS | aiComponent_TEXTURES | aiComponent_COLORS);
 		else
-			importer.SetPropertyInteger(AI_CONFIG_PP_RVC_FLAGS,
-																	aiComponent_CAMERAS | aiComponent_LIGHTS | aiComponent_BONEWEIGHTS | aiComponent_ANIMATIONS);
+			importer.SetPropertyInteger(AI_CONFIG_PP_RVC_FLAGS, aiComponent_CAMERAS | aiComponent_LIGHTS | aiComponent_BONEWEIGHTS | aiComponent_ANIMATIONS);
 		const aiScene* scene = importer.ReadFile (file.path,
 			aiProcess_ValidateDataStructure |
 			aiProcess_Triangulate |
@@ -24,7 +22,7 @@ static const aiScene* ImportFileListByMainFile (Assimp::Importer& importer, cons
 			aiProcess_JoinIdenticalVertices |
 			aiProcess_OptimizeGraph |
 			aiProcess_RemoveComponent |
-			aiProcess_FlipUVs;
+			aiProcess_FlipUVs);
 		return scene;
 	} catch (...) {
 		return nullptr;
@@ -73,7 +71,7 @@ Result ConvertFile (const File& file, const std::string& format, const FileLoade
 {
 	Assimp::Importer importer;
 	importer.SetIOHandler (new DelayLoadedIOSystemReadAdapter (file, loader));
-	const aiScene* scene = ImportFileListByMainFile (importer, file);
+	const aiScene* scene = ImportFileListByMainFile (importer, file, false);
 
 	Result result;
 	ExportScene (scene, format, result);

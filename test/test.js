@@ -28,7 +28,7 @@ function LoadModel (files)
 		let filePath = GetTestFileLocation (files[i]);
 		fileList.AddFile (filePath, fs.readFileSync (filePath))
 	}
-	return ajs.ConvertFileList (fileList, 'assjson');
+	return ajs.ConvertFileList (fileList, 'assjson', true);
 }
 
 function IsError (files)
