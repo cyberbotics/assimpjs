@@ -8,13 +8,9 @@
 #include <stdio.h>
 #include <iostream>
 
-static const aiScene* ImportFileListByMainFile (Assimp::Importer& importer, const File& file, const bool isMesh)
+static const aiScene* ImportFileListByMainFile (Assimp::Importer& importer, const File& file)
 {
 	try {
-		if (isMesh)
-			importer.SetPropertyInteger(AI_CONFIG_PP_RVC_FLAGS, aiComponent_CAMERAS | aiComponent_LIGHTS | aiComponent_BONEWEIGHTS | aiComponent_ANIMATIONS | aiComponent_TEXTURES | aiComponent_COLORS);
-		else
-			importer.SetPropertyInteger(AI_CONFIG_PP_RVC_FLAGS, aiComponent_CAMERAS | aiComponent_LIGHTS | aiComponent_BONEWEIGHTS | aiComponent_ANIMATIONS);
 		const aiScene* scene = importer.ReadFile (file.path,
 			aiProcess_ValidateDataStructure |
 			aiProcess_Triangulate |
@@ -71,7 +67,7 @@ Result ConvertFile (const File& file, const std::string& format, const FileLoade
 {
 	Assimp::Importer importer;
 	importer.SetIOHandler (new DelayLoadedIOSystemReadAdapter (file, loader));
-	const aiScene* scene = ImportFileListByMainFile (importer, file, false);
+	const aiScene* scene = ImportFileListByMainFile (importer, file);
 
 	Result result;
 	ExportScene (scene, format, result);
@@ -85,12 +81,16 @@ Result ConvertFileList (const FileList& fileList, const std::string& format, con
 	}
 
 	Assimp::Importer importer;
+	if (isMesh)
+		importer.SetPropertyInteger(AI_CONFIG_PP_RVC_FLAGS, aiComponent_CAMERAS | aiComponent_LIGHTS | aiComponent_BONEWEIGHTS | aiComponent_ANIMATIONS | aiComponent_TEXTURES | aiComponent_COLORS);
+	else
+		importer.SetPropertyInteger(AI_CONFIG_PP_RVC_FLAGS, aiComponent_CAMERAS | aiComponent_LIGHTS | aiComponent_BONEWEIGHTS | aiComponent_ANIMATIONS);
 	importer.SetIOHandler (new FileListIOSystemReadAdapter (fileList));
 
 	const aiScene* scene = nullptr;
 	for (size_t fileIndex = 0; fileIndex < fileList.FileCount (); fileIndex++) {
 		const File& file = fileList.GetFile (fileIndex);
-		scene = ImportFileListByMainFile (importer, file, isMesh);
+		scene = ImportFileListByMainFile (importer, file);
 		if (scene != nullptr) {
 			break;
 		}
