@@ -13,6 +13,15 @@
 
 The [emscripten](https://emscripten.org) interface for the [assimp](https://github.com/assimp/assimp) library. It runs entirely in the browser, and allows you to import 40+ 3D file formats and access the result in JSON or glTF format. This is not a full port of assimp, but an easy to use interface to access it's functionality.
 
+
+## Changes from original branch:
+
+- Disable a lot of format to keep only the four that we support in Webots: obj, dae, stl, fbx.
+  - Change in CMakeLists.txt
+  - Change in test/test.js
+- Disable a warning (Wunused-but-set-variable) that was preventing assimp to be compiled with Emscripten.
+- Change the target assimp version to point to the latest tag (currently v5.2.3). It should correspond to the version used in Webots.
+
 ## How to install?
 
 You can get assimpjs from [npm](https://www.npmjs.com/package/assimpjs):

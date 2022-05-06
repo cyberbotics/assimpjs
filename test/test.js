@@ -77,7 +77,7 @@ it ('Delay load', function () {
 	let scene = JSON.parse (jsonString);
 	assert.deepStrictEqual (scene.materials[1].properties[4].value, [1, 1, 1]);
 });
-
+/*
 it ('glTF export', function () {
 	let files = ['OBJ/cube_usemtl.obj', 'OBJ/cube_usemtl.mtl'];
 	let fileList = new ajs.FileList ();
@@ -99,11 +99,13 @@ it ('glTF export', function () {
 		assert.equal (result.GetFile (0).GetPath (), 'result.glb');
 	}
 });
-
+*/
+/*
 it ('3D', function () {
 	assert (IsSuccess (['3D/box.uc', '3D/box_a.3d', '3D/box_d.3d']));
 });
-
+*/
+/*
 it ('3DS', function () {
 	assert (IsSuccess (['3DS/test1.3ds']));
 	assert (IsSuccess (['3DS/fels.3ds']));
@@ -112,16 +114,19 @@ it ('3DS', function () {
 	assert (IsSuccess (['3DS/cube_with_diffuse_texture.3DS']));
 	assert (IsSuccess (['3DS/RotatingCube.3DS']));
 });
-
+*/
+/*
 it ('3MF', function () {
 	assert (IsSuccess (['3MF/box.3mf']));
 });
-
+*/
+/*
 it ('AC', function () {
 	assert (IsSuccess (['AC/SphereWithLight.ac']));
 	assert (IsSuccess (['AC/SphereWithLight_UTF8BOM.ac']));
 });
-
+*/
+/*
 it ('AMF', function () {
 	assert (IsSuccess (['AMF/test_with_mat.amf']));
 	assert (IsSuccess (['AMF/test1.amf']));
@@ -134,32 +139,37 @@ it ('AMF', function () {
 	assert (IsSuccess (['AMF/test8.amf']));
 	assert (IsSuccess (['AMF/test9.amf']));
 });
-
+*/
+/*
 it ('ASE', function () {
 	assert (IsSuccess (['ASE/ThreeCubesGreen.ASE']));
 	assert (IsSuccess (['ASE/RotatingCube.ASE']));
 	assert (IsSuccess (['ASE/CameraRollAnim.ase']));
 	assert (IsSuccess (['ASE/CameraRollAnimWithChildObject.ase']));
 });
-
+*/
+/*
 it ('B3D', function () {
 	assert (IsSuccess (['B3D/WusonBlitz.b3d']));
 });
-
+*/
+/*
 it ('BLEND', function () {
 	assert (IsSuccess (['BLEND/box.blend']));
 	assert (IsSuccess (['BLEND/AreaLight_269.blend']));
 });
-
+*/
+/*
 it ('BVH', function () {
 	assert (IsSuccess (['BVH/Boxing_Toes.bvh']));
 });
-
+*/
+/*
 it ('COB', function () {
 	assert (IsSuccess (['COB/molecule.cob']));
 	assert (IsSuccess (['COB/dwarf.cob']));
 });
-
+*/
 it ('COLLADA', function () {
 	assert (IsSuccess (['COLLADA/duck.dae']));
 	assert (IsSuccess (['COLLADA/duck.zae']));
@@ -177,16 +187,17 @@ it ('COLLADA', function () {
 	assert (IsSuccess (['COLLADA/teapot_instancenodes.DAE']));
 	assert (IsSuccess (['COLLADA/teapots.DAE']));
 });
-
+/*
 it ('CSM', function () {
 	assert (IsSuccess (['CSM/ThomasFechten.csm']));
 });
-
+*/
+/*
 it ('DXF', function () {
 	assert (IsSuccess (['DXF/PinkEggFromLW.dxf']));
 	assert (IsSuccess (['DXF/wuson.dxf']));
 });
-
+*/
 it ('FBX', function () {
 	assert (IsSuccess (['FBX/box.fbx']));
 	assert (IsSuccess (['FBX/cubes_nonames.fbx']));
@@ -197,38 +208,44 @@ it ('FBX', function () {
 	assert (IsSuccess (['FBX/embedded_ascii/box.FBX']));
 	assert (IsSuccess (['FBX/embedded_ascii/box_embedded_texture_fragmented.fbx']));
 });
-
+/*
 it ('glTF', function () {
 	assert (IsSuccess (['glTF/BoxTextured-glTF/BoxTextured.gltf', 'glTF/BoxTextured-glTF/BoxTextured.bin']));
 	assert (IsSuccess (['glTF/BoxTextured-glTF-Embedded/BoxTextured.gltf']));
 	assert (IsSuccess (['glTF/CesiumMilkTruck/CesiumMilkTruck.gltf', 'glTF/CesiumMilkTruck/CesiumMilkTruck.bin']));
 });
-
+*/
+/*
 it ('glTF2', function () {
 	assert (IsSuccess (['glTF2/BoxTextured-glTF/BoxTextured.gltf', 'glTF2/BoxTextured-glTF/BoxTextured0.bin']));
 	assert (IsSuccess (['glTF2/BoxTextured-glTF-Binary/BoxTextured.glb']));
 	assert (IsSuccess (['glTF2/2CylinderEngine-glTF-Binary/2CylinderEngine.glb']));
 });
-
+*/
+/*
 it ('HMP', function () {
 	assert (IsSuccess (['HMP/terrain.hmp']));
 });
-
+*/
+/*
 it ('IFC', function () {
 	// IFC importer is disabled
 	assert (IsError (['IFC/AC14-FZK-Haus.ifc']));
 });
-
+*/
+/*
 it ('IRR', function () {
 	// IRR importer is disabled
 	assert (IsError (['IRR/box.irr']));
 });
-
+*/
+/*
 it ('IRRMesh', function () {
 	// IRRMESH importer is disabled
 	assert (IsError (['IRRMesh/spider.irrmesh']));
 });
-
+*/
+/*
 it ('LWO', function () {
 	assert (IsSuccess (['LWO/LWO2/hierarchy.lwo']));
 	assert (IsSuccess (['LWO/LWO2/nonplanar_polygon.lwo']));
@@ -240,30 +257,36 @@ it ('LWO', function () {
 
 	assert (IsError (['LWO/LWOB/sphere_with_mat_gloss_10pc.lwo']));
 });
-
+*/
+/*
 it ('LWS', function () {
 	assert (IsSuccess (['LWS/move_x.lws']));
 	assert (IsSuccess (['LWS/simple_cube.lwo']));
 });
-
+*/
+/*
 it ('M3D', function () {
 	// M3D importer is disabled
 	assert (IsError (['M3D/cube_usemtl.m3d']));
 });
-
+*/
+/*
 it ('MD2', function () {
 	assert (IsSuccess (['MD2/faerie.md2']));
 	assert (IsSuccess (['MD2/sydney.md2']));
 });
-
+*/
+/*
 it ('MD5', function () {
 	assert (IsSuccess (['MD5/SimpleCube.md5mesh']));
 });
-
+*/
+/*
 it ('MDC', function () {
 	assert (IsSuccess (['MDC/spider.mdc']));
 });
-
+*/
+/*
 // it ('MDL', function () {
 // 	// TODO: timeout
 // 	assert (IsError (['MDL/MDL (HL1)/man.mdl']));
@@ -271,19 +294,21 @@ it ('MDC', function () {
 // 	assert (IsSuccess (['MDL/MDL5 (3DGS A5)/minigun_mdl5.mdl']));
 // 	assert (IsSuccess (['MDL/MDL7 (3DGS A7)/Sphere_DiffPinkBlueSpec_Alpha90.mdl']));
 // });
-
+*/
+/*
 it ('MS3D', function () {
 	assert (IsSuccess (['MS3D/twospheres.ms3d']));
 	assert (IsSuccess (['MS3D/twospheres_withmats.ms3d']));
 	assert (IsSuccess (['MS3D/Wuson.ms3d']));
 });
-
+*/
+/*
 it ('NFF', function () {
 	assert (IsSuccess (['NFF/NFF/cylinder.nff']));
 	assert (IsSuccess (['NFF/NFF/hexahedron.nff']));
 	assert (IsSuccess (['NFF/NFF/spheres.nff']));
 });
-
+*/
 it ('OBJ', function () {
 	assert (IsSuccess (['OBJ/box.obj']));
 	assert (IsSuccess (['OBJ/box_longline.obj']));
@@ -292,50 +317,57 @@ it ('OBJ', function () {
 	assert (IsSuccess (['OBJ/cube_usemtl.obj']));
 	assert (IsSuccess (['OBJ/cube_usemtl.obj', 'OBJ/cube_usemtl.mtl']));
 });
-
+/*
 it ('OFF', function () {
 	assert (IsSuccess (['OFF/Cube.off']));
 	assert (IsSuccess (['OFF/Wuson.off']));
 });
-
+*/
+/*
 it ('Ogre', function () {
 	assert (IsSuccess (['Ogre/TheThing/Mesh.mesh.xml', 'Ogre/TheThing/BlockMat.material']));
 });
-
+*/
+/*
 it ('OpenGEX', function () {
 	assert (IsSuccess (['OpenGEX/Example.ogex']));
 	assert (IsSuccess (['OpenGEX/camera.ogex']));
 });
-
+*/
+/*
 it ('PLY', function () {
 	assert (IsSuccess (['PLY/cube.ply']));
 	assert (IsSuccess (['PLY/cube_binary.ply']));
 	assert (IsSuccess (['PLY/cube_uv.ply']));
 	assert (IsSuccess (['PLY/Wuson.ply']));
 });
-
+*/
+/*
 it ('Q3D', function () {
 	assert (IsSuccess (['Q3D/earth.q3o']));
 	assert (IsSuccess (['Q3D/E-AT-AT.q3o']));
 	assert (IsSuccess (['Q3D/WusonOrange.q3o']));
 	assert (IsSuccess (['Q3D/WusonOrange.q3s']));
 });
-
+*/
+/*
 it ('RAW', function () {
 	// RAW importer is disabled
 	assert (IsError (['RAW/WithColor.raw']));
 });
-
+*/
+/*
 it ('SIB', function () {
 	assert (IsSuccess (['SIB/heffalump.sib']));
 });
-
+*/
+/*
 it ('SMD', function () {
 	assert (IsSuccess (['SMD/triangle.smd']));
 	assert (IsSuccess (['SMD/holy_grailref.smd']));
 	assert (IsSuccess (['SMD/WusonSMD.smd']));
 });
-
+*/
 it ('STL', function () {
 	assert (IsSuccess (['STL/Spider_ascii.stl']));
 	assert (IsSuccess (['STL/Spider_binary.stl']));
@@ -343,27 +375,30 @@ it ('STL', function () {
 	assert (IsSuccess (['STL/3DSMaxExport.STL']));
 	assert (IsSuccess (['STL/Wuson.stl']));
 });
-
+/*
 it ('TER', function () {
 	// TER importer is disabled
 	assert (IsError (['TER/RealisticTerrain.ter']));
 });
-
+*/
+/*
 it ('X', function () {
 	assert (IsSuccess (['X/test_cube_text.x']));
 	assert (IsSuccess (['X/test_cube_compressed.x']));
 	assert (IsSuccess (['X/test_cube_binary.x']));
 });
-
+*/
+/*
 it ('X3D', function () {
 	// X3D importer is disabled
 	assert (IsError (['X3D/ComputerKeyboard.x3d']));
 });
-
+*/
+/*
 it ('XGL', function () {
 	assert (IsSuccess (['XGL/cubes_with_alpha.zgl']));
 	assert (IsSuccess (['XGL/sample_official.xgl']));
 	assert (IsSuccess (['XGL/Wuson.zgl']));
 });
-
+*/
 });
