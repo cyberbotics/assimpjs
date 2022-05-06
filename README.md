@@ -1,12 +1,12 @@
 <div align="center">
-    
+
 <img src="docs/images/assimpjs_logo_small.png?raw=true"> <br>
 
 [Check out the live demo here!](http://kovacsv.github.io/assimpjs)
 
 [![Native Build](https://github.com/kovacsv/assimpjs/actions/workflows/native_build.yml/badge.svg)](https://github.com/kovacsv/assimpjs/actions/workflows/native_build.yml)
 [![WASM Build](https://github.com/kovacsv/assimpjs/actions/workflows/wasm_build.yml/badge.svg)](https://github.com/kovacsv/assimpjs/actions/workflows/wasm_build.yml)
-    
+
 </div>
 
 # assimpjs
@@ -21,6 +21,8 @@ The [emscripten](https://emscripten.org) interface for the [assimp](https://gith
   - Change in test/test.js
 - Disable a warning (Wunused-but-set-variable) that was preventing assimp to be compiled with Emscripten.
 - Change the target assimp version to point to the latest tag (currently v5.2.3). It should correspond to the version used in Webots.
+- Add an option in `ConvertFileList` in assimpjs/assimpjs.cpp to say if we are in the `Mesh` or `CadShape` case
+- Change the flags of `ImportFileListByMainFile` in assimpjs/assimpjs.cpp
 
 ## How to install?
 
@@ -69,10 +71,10 @@ assimpjs ().then (function (ajs) {
         for (let i = 0; i < files.length; i++) {
             fileList.AddFile (files[i], new Uint8Array (arrayBuffers[i]));
         }
-        
+
         // convert file list to assimp json
         let result = ajs.ConvertFileList (fileList, 'assjson');
-        
+
         // check if the conversion succeeded
         if (!result.IsSuccess () || result.FileCount () == 0) {
             resultDiv.innerHTML = result.GetErrorCode ();
@@ -85,7 +87,7 @@ assimpjs ().then (function (ajs) {
 
         // parse the result json
         let resultJson = JSON.parse (jsonContent);
-        
+
         resultDiv.innerHTML = JSON.stringify (resultJson, null, 4);
     });
 });
@@ -102,7 +104,7 @@ const assimpjs = require ('assimpjs')();
 assimpjs.then ((ajs) => {
     // create new file list object
     let fileList = new ajs.FileList ();
-    
+
     // add model files
     fileList.AddFile (
         'cube_with_materials.obj',
@@ -112,7 +114,7 @@ assimpjs.then ((ajs) => {
         'cube_with_materials.mtl',
         fs.readFileSync ('testfiles/cube_with_materials.mtl')
     );
-    
+
     // convert file list to assimp json
     let result = ajs.ConvertFileList (fileList, 'assjson');
 
@@ -155,7 +157,7 @@ assimpjs.then ((ajs) => {
             return fs.readFileSync ('testfiles/' + fileName);
         }
     );
-    
+
     // check if the conversion succeeded
     if (!result.IsSuccess () || result.FileCount () == 0) {
         console.log (result.GetErrorCode ());

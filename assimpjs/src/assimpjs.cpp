@@ -8,14 +8,23 @@
 #include <stdio.h>
 #include <iostream>
 
-static const aiScene* ImportFileListByMainFile (Assimp::Importer& importer, const File& file)
+static const aiScene* ImportFileListByMainFile (Assimp::Importer& importer, const File& file, const bool isMesh)
 {
 	try {
+		if (isMesh)
+			importer.SetPropertyInteger(AI_CONFIG_PP_RVC_FLAGS, aiComponent_CAMERAS | aiComponent_LIGHTS | aiComponent_BONEWEIGHTS |
+																													aiComponent_ANIMATIONS | aiComponent_TEXTURES | aiComponent_COLORS);
+		else
+			importer.SetPropertyInteger(AI_CONFIG_PP_RVC_FLAGS,
+																	aiComponent_CAMERAS | aiComponent_LIGHTS | aiComponent_BONEWEIGHTS | aiComponent_ANIMATIONS);
 		const aiScene* scene = importer.ReadFile (file.path,
+			aiProcess_ValidateDataStructure |
 			aiProcess_Triangulate |
-			aiProcess_GenUVCoords |
+			aiProcess_GenSmoothNormals |
 			aiProcess_JoinIdenticalVertices |
-			aiProcess_SortByPType);
+			aiProcess_OptimizeGraph |
+			aiProcess_RemoveComponent |
+			aiProcess_FlipUVs;
 		return scene;
 	} catch (...) {
 		return nullptr;
@@ -71,7 +80,7 @@ Result ConvertFile (const File& file, const std::string& format, const FileLoade
 	return result;
 }
 
-Result ConvertFileList (const FileList& fileList, const std::string& format)
+Result ConvertFileList (const FileList& fileList, const std::string& format, const bool isMesh)
 {
 	if (fileList.FileCount () == 0) {
 		return Result (ErrorCode::NoFilesFound);
@@ -83,7 +92,7 @@ Result ConvertFileList (const FileList& fileList, const std::string& format)
 	const aiScene* scene = nullptr;
 	for (size_t fileIndex = 0; fileIndex < fileList.FileCount (); fileIndex++) {
 		const File& file = fileList.GetFile (fileIndex);
-		scene = ImportFileListByMainFile (importer, file);
+		scene = ImportFileListByMainFile (importer, file, isMesh);
 		if (scene != nullptr) {
 			break;
 		}
