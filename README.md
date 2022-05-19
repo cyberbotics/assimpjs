@@ -182,6 +182,8 @@ A set of batch scripts are prepared for building on Windows.
 
 Install [CMake](https://cmake.org) (3.6 minimum version is needed). Make sure that the cmake executable is in the PATH.
 
+Run `npm install`.
+
 ### 2. Install Emscripten SDK
 
 Run the Emscripten setup script.
