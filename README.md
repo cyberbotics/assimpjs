@@ -197,7 +197,7 @@ tools\setup_emscripten_win.bat
 Run the release build script.
 
 ```
-tools\build_wasm_win_release.bat
+tools\build_wasm_win_dist.bat
 ```
 
 ### 4. Build the native project (optional)
